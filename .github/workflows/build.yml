@@ -32,6 +32,3 @@ jobs:
       - name: Build and install project with Maven
         run: mvn -B clean install
         working-directory: experimental/portappb
-
-      - name: Verify with Maven
-        run: mvn -B test org.jacoco:jacoco-maven-plugin:report-aggregate
