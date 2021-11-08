@@ -7,21 +7,29 @@ package com.com619.group6.model;
  */
 public class Berth {
 
-	private int berthID;
+	private int id;
 
-	
 	/**
-	 * @return the berthID
+	 * Public constructor, allow instantiation.
+	 * 
+	 * @param id ID of Berth
 	 */
-	public int getBerthID() {
-		return berthID;
+	public Berth(int id) {
+		this.id = id;
 	}
 
 	/**
-	 * @param berthID the berthID to set
+	 * @return the id
 	 */
-	public void setBerthID(int berthID) {
-		this.berthID = berthID;
+	public int getId() {
+		return id;
 	}
-	
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+
 }

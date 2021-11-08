@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * Application entry class.
+ * 
  * @author WhitearL
  *
  */
@@ -13,6 +14,7 @@ public class PortappbApplication {
 
 	/**
 	 * Entry point.
+	 * 
 	 * @param args Command line arguments
 	 */
 	public static void main(String[] args) {

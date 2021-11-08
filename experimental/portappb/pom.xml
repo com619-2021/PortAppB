@@ -3,26 +3,26 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	
+
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.5.6</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	
+
 	<groupId>com.com619.group6</groupId>
 	<artifactId>portappb</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>portappb</name>
 	<description>Port Application for COM617</description>
-	
+
 	<properties>
 		<java.version>1.8</java.version>
 		<vaadin.version>14.7.3</vaadin.version>
 		<springBoot.version>2.5.6</springBoot.version>
 	</properties>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -74,7 +74,7 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-	
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -92,25 +92,24 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<version>${springBoot.version}</version>
 			</plugin>
-            <plugin>
-                <groupId>com.vaadin</groupId>
-                <artifactId>vaadin-maven-plugin</artifactId>
+			<plugin>
+				<groupId>com.vaadin</groupId>
+				<artifactId>vaadin-maven-plugin</artifactId>
 				<version>${vaadin.version}</version>
-                <executions>
-                    <execution>
-                        <id>prep</id>
-                        <goals>
-                            <goal>prepare-frontend</goal>
-                            <goal>build-frontend</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <npmRegistryURL>https://nexusrepo.com/repository/npmjs/</npmRegistryURL>
-                </configuration>
-            </plugin>
+				<executions>
+					<execution>
+						<id>prep</id>
+						<goals>
+							<goal>prepare-frontend</goal>
+							<goal>build-frontend</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<npmRegistryURL>https://nexusrepo.com/repository/npmjs/</npmRegistryURL>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>com.google.cloud.tools</groupId>
 				<artifactId>jib-maven-plugin</artifactId>
