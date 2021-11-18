@@ -1,7 +1,11 @@
-package com.com619.group6.startup;
+package com.com619.group6;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+import org.springframework.context.annotation.ComponentScan;
+
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * Application entry class.
@@ -9,7 +13,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author WhitearL
  *
  */
-@SpringBootApplication
+@ComponentScan("com.com619.group6")
+@EnableSwagger2
+@SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
 public class PortappbApplication {
 
 	/**
