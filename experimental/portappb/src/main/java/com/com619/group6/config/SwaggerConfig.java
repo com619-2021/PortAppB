@@ -12,9 +12,20 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger.web.UiConfiguration;
 import springfox.documentation.swagger.web.UiConfigurationBuilder;
 
+/**
+ * Class to configure swagger document generation
+ * 
+ * @author WhitearL
+ *
+ */
 @Configuration
 public class SwaggerConfig {
 
+	/**
+	 * Build documentation for api
+	 * 
+	 * @return Docket endpoint for api
+	 */
 	@Bean
 	public Docket api() {
 		return new Docket(DocumentationType.SWAGGER_2).forCodeGeneration(Boolean.TRUE).select()
@@ -22,12 +33,22 @@ public class SwaggerConfig {
 				.build().apiInfo(apiInfo());
 	}
 
+	/**
+	 * Create basic api overview information
+	 * 
+	 * @return Api information
+	 */
 	@Bean
 	public ApiInfo apiInfo() {
 		return new ApiInfoBuilder().title("Port App API").description("API for Port Application").version("1.0.0")
 				.build();
 	}
 
+	/**
+	 * Configure UI
+	 * 
+	 * @return UI Configuration object
+	 */
 	@Bean
 	public UiConfiguration uiConfiguration() {
 		return UiConfigurationBuilder.builder().deepLinking(true).validatorUrl(null).build();
