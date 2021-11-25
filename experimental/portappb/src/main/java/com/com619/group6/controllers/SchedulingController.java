@@ -80,5 +80,4 @@ public class SchedulingController {
 	public List<Berth> getAvailableBerths() {
 		return new ArrayList<>();
 	}
-
 }
