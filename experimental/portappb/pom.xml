@@ -25,7 +25,7 @@
 		<javax.persistence.version>2.2.1</javax.persistence.version>
 		<derby.version>10.9.1.0</derby.version>
 		<!-- logging -->
-		<log4j.version>2.14.0</log4j.version>
+		<log4j.version>2.14.1</log4j.version>
 		<slf4j.version>1.7.32</slf4j.version>
 		<springfox.version>2.9.2</springfox.version>
 
