@@ -3,8 +3,8 @@ package com.com619.group6.jpadao;
 import com.com619.group6.model.Berth;
 import com.com619.group6.model.dao.BerthDao;
 import com.com619.group6.model.dao.DaoFactory;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
@@ -62,7 +62,7 @@ public class BerthDaoJpaTests {
      * - Initialises the berthDao instance to be tested
      * - Removes all the berths from the persistence database
      */
-    @Before
+    @BeforeEach
     public void setup()
     {
         // Remove everything from the database before each test to ensure that
