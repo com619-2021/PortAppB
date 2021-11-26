@@ -24,6 +24,19 @@ public class BerthDaoJpaTests {
      * Berth name used for test purposes, specific value is unimportant.
      */
     private static final String SOME_NAME = "Some name";
+    /**
+     * Berth name used for test purposes, name helps identify specific instance.
+     */
+    private static final String BERTH_1 = "Berth 1";
+    /**
+     * Berth name used for test purposes, name helps identify specific instance.
+     */
+    private static final String BERTH_2 = "Berth 2";
+
+    /**
+     * ID number used for testing purposes, specific value is unimportant.
+     */
+    private static final long SOME_ID = 123;
 
     /**
      * 0 items in a list.
@@ -33,6 +46,11 @@ public class BerthDaoJpaTests {
      * 2 items in a list.
      */
     private static final int TWO_ITEMS = 2;
+
+    /**
+     * Index of the first item in a list.
+     */
+    private static final int FIRST_ITEM = 0;
 
     /**
      * Used to hold a reference to the berthDao instance being tested.
@@ -65,17 +83,17 @@ public class BerthDaoJpaTests {
 
         berthDao.create(testBerth);
 
-        List<Berth> stationList = berthDao.getAll();
-        assertThat(stationList, hasItem(testBerth));
+        List<Berth> berthList = berthDao.getAll();
+        assertThat(berthList, hasItem(testBerth));
     }
 
     /**
-     * Check that the persisted Stations can be retrieved from the database.
+     * Check that the persisted berths can be retrieved from the database.
      */
     @Test
     public void getAllReturnsListOfAllAddedBerths()
     {
-        // We need to create 2 station instances because if we add the same instance
+        // We need to create 2 berth instances because if we add the same instance
         // twice the persistence layer treats it as the same item, and we only get
         // one item in the database
         Berth testBerth = new Berth();
@@ -88,10 +106,10 @@ public class BerthDaoJpaTests {
     }
 
     /**
-     * Check that all stations can be removed from the persistence database.
+     * Check that all berths can be removed from the persistence database.
      */
     @Test
-    public void deleteAllRemovesAllStationsFromTheDatabase()
+    public void deleteAllRemovesAllBerthsFromTheDatabase()
     {
         Berth testBerth = new Berth();
         berthDao.create(testBerth);
@@ -102,5 +120,104 @@ public class BerthDaoJpaTests {
 
         List<Berth> berthList = berthDao.getAll();
         assertThat(berthList.size(), equalTo(ZERO_ITEMS));
+    }
+
+    /**
+     * Check that only the berth with the specified ID is removed from the database.
+     */
+    @Test
+    public void deleteRemovesBerthWithPassedInIdFromTheDatabase()
+    {
+        Berth testBerth = new Berth();
+        testBerth.setName(BERTH_1);
+        berthDao.create(testBerth);
+        testBerth = new Berth();
+        testBerth.setName(BERTH_2);
+        berthDao.create(testBerth);
+
+        testBerth = berthDao.getAll()
+                .get(FIRST_ITEM);
+        berthDao.deleteOne(testBerth.getId());
+
+        List<Berth> berthList = berthDao.getAll();
+        assertThat(berthList, not(hasItem(testBerth)));
+    }
+
+    /**
+     * Check that a berth is correctly retrieved by name when one exists.
+     */
+    @Test
+    public void getOneRetrievesBerthWithPassedInNameFromDatabase()
+    {
+        Berth testBerth = new Berth();
+        testBerth.setName(BERTH_1);
+        berthDao.create(testBerth);
+
+        Berth berth = berthDao.getOne(BERTH_1);
+
+        assertThat(berth.getName(), equalTo(BERTH_1));
+    }
+
+    /**
+     * Check that null is returned if the requested berth doesn't exist.
+     */
+    @Test
+    public void getBerthReturnsNullIfNoMatchFoundForName()
+    {
+        Berth berth = berthDao.getOne(BERTH_1);
+
+        assertThat(berth, nullValue());
+    }
+
+    /**
+     * Check that a berth is correctly retrieved by id when one exists.
+     */
+    @Test
+    public void getBerthRetrievesBerthWithPassedInIdFromDatabase()
+    {
+        Berth testBerth = new Berth();
+        testBerth.setName(BERTH_1);
+        berthDao.create(testBerth);
+        long id = berthDao.getOne(BERTH_1).getId();
+
+        Berth berth = berthDao.getOne(id);
+
+        assertThat(berth.getName(), equalTo(BERTH_1));
+    }
+
+    /**
+     * Check that null is returned if the requested berth doesn't exist.
+     */
+    @Test
+    public void getBerthReturnsNullIfNoMatchFoundForId()
+    {
+        Berth berth = berthDao.getOne(SOME_ID);
+
+        assertThat(berth, nullValue());
+    }
+
+    /**
+     * Check that we can update the name of a berth that has been persisted.
+     */
+    @Test
+    public void updateBerthSetsBerthNameToPassedInBerthName()
+    {
+        Berth testBerth = new Berth();
+        testBerth.setName(BERTH_1);
+        berthDao.create(testBerth);
+        long id = berthDao.getOne(BERTH_1)
+                .getId();
+        
+        // We create a new berth instance and set the appropriate properties
+        // rather than retrieve the berth with the required ID and modify that
+        // as modifying the retrieved berth also modifies the instance which
+        // was originally persisted.
+        Berth newDetails = new Berth();
+        newDetails.setId(id);
+        newDetails.setName(BERTH_2);
+
+        berthDao.update(newDetails);
+        Berth updatedBerth = berthDao.getOne(id);
+        assertThat(updatedBerth.getName(), equalTo(BERTH_2));
     }
 }

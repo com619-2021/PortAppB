@@ -15,46 +15,53 @@ public class Berth {
     /**
      * Unique ID for the Station instance.
      */
-    private int id;
+    private long id;
 
-	/**
-	 * Unique ID for the Station instance.
-	 */
-	private String name;
+    /**
+     * Unique ID for the Station instance.
+     */
+    private String name;
 
-	/**
-	 * Public constructor, allow instantiation.
-	 */
-	public Berth() {
-	}
+    /**
+     * Public constructor, allow instantiation.
+     */
+    public Berth() {
+    }
 
-	/**
-	 * ID Property - getter.
-	 * @return the id
-	 */
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public int getId() {
-		return id;
-	}
+    /**
+     * ID Property - getter.
+     *
+     * @return the id
+     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public long getId() {
+        return id;
+    }
 
-	/**
-	 * ID Property - setter.
-	 * @param newId the id to set
-	 */
-	public void setId(final int newId) {
-		this.id = newId;
-	}
+    /**
+     * ID Property - setter.
+     *
+     * @param newId the id to set
+     */
+    public void setId(final long newId) {
+        this.id = newId;
+    }
 
-	/**
-	 * Name property - getter.
-	 * @return
-	 */
-	public String getName() {
-		return name;
-	}
+    /**
+     * Name property - getter.
+     *
+     * @return return the current name of the berth
+     */
+    public String getName() {
+        return name;
+    }
 
-	public void setName(final String newName) {
-		name = newName;
-	}
+    /**
+     * Name property - setter.
+     * @param newName the new name of the berth
+     */
+    public void setName(final String newName) {
+        name = newName;
+    }
 }
