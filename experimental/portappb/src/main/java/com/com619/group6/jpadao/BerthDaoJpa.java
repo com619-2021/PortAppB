@@ -26,10 +26,10 @@ public final class BerthDaoJpa implements BerthDao {
     }
 
     @Override
-    public void create(Berth berth) {
+    public void create(Berth newBerth) {
         entityManager.getTransaction()
                 .begin();
-        entityManager.persist(berth);
+        entityManager.persist(newBerth);
         entityManager.getTransaction()
                 .commit();
     }
@@ -56,8 +56,18 @@ public final class BerthDaoJpa implements BerthDao {
     }
 
     @Override
-    public void delete(Berth berth) {
+    public void deleteOne(Berth berth) {
 
+    }
+
+    @Override
+    public void deleteAll() {
+        entityManager.getTransaction()
+                .begin();
+        entityManager.createQuery("DELETE FROM Berth")
+                .executeUpdate();
+        entityManager.getTransaction()
+                .commit();
     }
 
     private Berth runGetStationQuery(final TypedQuery<Berth> q)

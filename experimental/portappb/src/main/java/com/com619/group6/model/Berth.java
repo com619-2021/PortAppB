@@ -18,13 +18,9 @@ public class Berth {
     private int id;
 
 	/**
-	 * Public constructor, allow instantiation.
-	 * 
-	 * @param id ID of Berth
+	 * Unique ID for the Station instance.
 	 */
-	public Berth(int id) {
-		this.id = id;
-	}
+	private String name;
 
 	/**
 	 * Public constructor, allow instantiation.
@@ -33,6 +29,7 @@ public class Berth {
 	}
 
 	/**
+	 * ID Property - getter.
 	 * @return the id
 	 */
 	@Id
@@ -42,9 +39,22 @@ public class Berth {
 	}
 
 	/**
+	 * ID Property - setter.
 	 * @param newId the id to set
 	 */
-	public void setId(int newId) {
+	public void setId(final int newId) {
 		this.id = newId;
+	}
+
+	/**
+	 * Name property - getter.
+	 * @return
+	 */
+	public String getName() {
+		return name;
+	}
+
+	public void setName(final String newName) {
+		name = newName;
 	}
 }
