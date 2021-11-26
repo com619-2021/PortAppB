@@ -11,7 +11,7 @@ public final class DaoFactoryJpa implements DaoFactory {
     /**
      * Name of the persistence unit as required by the entity manager.
      */
-    private static final String PERSISTENCE_UNIT_NAME = "portBerths";
+    private static final String PERSISTENCE_UNIT_NAME = "portAppBPersistence";
 
     /**
      * Factory used to create the entity manager used to persist the DAO entities.

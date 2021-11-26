@@ -24,18 +24,22 @@
 		<eclipselink.version>2.7.1</eclipselink.version>
 		<javax.persistence.version>2.2.1</javax.persistence.version>
 		<derby.version>10.9.1.0</derby.version>
+		<!-- logging -->
+		<log4j.version>2.14.0</log4j.version>
+		<slf4j.version>1.7.30</slf4j.version>
+		<springfox.version>2.9.2</springfox.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger2</artifactId>
-			<version>2.9.2</version>
+			<version>${springfox.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger-ui</artifactId>
-			<version>2.9.2</version>
+			<version>${springfox.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -92,6 +96,12 @@
 			<version>${eclipselink.version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>org.eclipse.persistence.extension</artifactId>
+			<version>${eclipselink.version}</version>
+		</dependency>
+
 		<!-- Eclipselink JPA implementation -->
 		<dependency>
 			<groupId>org.eclipse.persistence</groupId>
@@ -112,6 +122,35 @@
 			<artifactId>derbytools</artifactId>
 			<version>${derby.version}</version>
 			<scope>compile</scope>
+		</dependency>
+
+		<!-- Logging - required for JPA / Derby -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+
+		<!-- log4j dependencies -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j-impl</artifactId>
+			<version>${log4j.version}</version>
 		</dependency>
 	</dependencies>
 
