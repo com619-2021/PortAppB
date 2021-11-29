@@ -23,7 +23,7 @@
 		<springBoot.version>2.5.6</springBoot.version>
 		<eclipselink.version>2.7.1</eclipselink.version>
 		<javax.persistence.version>2.2.1</javax.persistence.version>
-		<derby.version>10.9.1.0</derby.version>
+		<derby.version>10.15.2.0</derby.version>
 		<!-- logging -->
 		<log4j.version>2.14.1</log4j.version>
 		<slf4j.version>1.7.32</slf4j.version>
