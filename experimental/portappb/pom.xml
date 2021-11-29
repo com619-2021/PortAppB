@@ -30,7 +30,7 @@
 		<springfox.version>2.9.2</springfox.version>
 
 		<!-- testing -->
-		<junit.version>5.8.1</junit.version>
+		<junit.version>5.8.2</junit.version>
 		<hamcrest-core.version>2.2</hamcrest-core.version>
 		<mockito.version>3.6.28</mockito.version>
 		<jacoco.version>0.8.6</jacoco.version>
