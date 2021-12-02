@@ -1,9 +1,11 @@
 package com.com619.group6.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +20,8 @@ public class PortServiceOrder {
 	/**
 	 * Unique ID for the PortServiceOrder instance.
 	 */
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
 	/**
@@ -25,7 +29,10 @@ public class PortServiceOrder {
 	 */
 	private String name;
 
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<PortService> servicesRequired;
+
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Stevedore> assignedStevedores;
 	private double totalCost;
 
@@ -51,8 +58,6 @@ public class PortServiceOrder {
 	 *
 	 * @return the id
 	 */
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public long getId() {
 		return id;
 	}

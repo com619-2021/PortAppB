@@ -1,14 +1,19 @@
 package com.com619.group6.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * Model class representing a service as part of a PSO.
  * 
  * @author WhitearL
  *
  */
+@Entity
 public class PortService {
-
-	private int id;
+	private long id;
 	private ServiceType serviceType;
 	private double cost;
 
@@ -23,6 +28,22 @@ public class PortService {
 		this.id = id;
 		this.serviceType = serviceType;
 		this.cost = cost;
+	}
+
+	public PortService() {
+	}
+
+	/**
+	 * @return the id
+	 */
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long newId) {
+		id = newId;
 	}
 
 	/**
@@ -52,19 +73,4 @@ public class PortService {
 	public void setCost(double cost) {
 		this.cost = cost;
 	}
-
-	/**
-	 * @return the id
-	 */
-	public int getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
-
 }

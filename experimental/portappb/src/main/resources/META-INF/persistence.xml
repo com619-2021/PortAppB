@@ -10,6 +10,9 @@ http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd" version="2.0"
         <!-- explicitly list classes from model -->
         <class>com.com619.group6.model.Berth</class>
         <class>com.com619.group6.model.PortServiceOrder</class>
+        <class>com.com619.group6.model.PortService</class>
+        <class>com.com619.group6.model.Stevedore</class>
+
 
         <properties>
             <!-- Derby java database -->

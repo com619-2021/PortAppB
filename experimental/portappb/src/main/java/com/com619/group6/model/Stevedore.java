@@ -1,5 +1,6 @@
 package com.com619.group6.model;
 
+import javax.persistence.*;
 import java.util.List;
 
 /**
@@ -8,10 +9,15 @@ import java.util.List;
  * @author WhitearL
  *
  */
+@Entity
 public class Stevedore {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
 
 	private String name;
-	private int id;
+
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<PortServiceOrder> assignedPSOs;
 
 	/**
@@ -25,6 +31,9 @@ public class Stevedore {
 		this.name = name;
 		this.id = id;
 		this.assignedPSOs = assignedPSOs;
+	}
+
+	public Stevedore() {
 	}
 
 	/**
@@ -44,15 +53,15 @@ public class Stevedore {
 	/**
 	 * @return the id
 	 */
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param newId the id to set
 	 */
-	public void setId(int id) {
-		this.id = id;
+	public void setId(long newId) {
+		id = newId;
 	}
 
 	/**
