@@ -27,7 +27,7 @@ public final class DaoFactoryJpa implements DaoFactory {
     /**
      * DAO singleton used to access data related to the berth entities.
      */
-    private static BerthDao berthDao;
+    private static final BerthDao berthDao;
 
     static {
         factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
