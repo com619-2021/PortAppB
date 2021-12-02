@@ -6,8 +6,6 @@ name: Test on Master Push
 on:
    # Triggers the workflow on push but only for the master branch
    push:
-     branches-ignore:
-      - 'dependabot/**'
      branches: [ main ]
    workflow_dispatch:
 
