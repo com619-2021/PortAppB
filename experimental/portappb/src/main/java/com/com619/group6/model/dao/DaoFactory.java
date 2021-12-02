@@ -8,6 +8,12 @@ public interface DaoFactory {
     BerthDao getBerthDao();
 
     /**
+     * Get a reference to the port service DAO.
+     * @return an instance of the port service DAO
+     */
+    PortServiceDao getPortServiceDao();
+
+    /**
      * Get a reference to the port service order DAO.
      * @return an instance of the port service order DAO
      */

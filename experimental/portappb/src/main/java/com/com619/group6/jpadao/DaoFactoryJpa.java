@@ -1,6 +1,7 @@
 package com.com619.group6.jpadao;
 
 import com.com619.group6.model.dao.BerthDao;
+import com.com619.group6.model.dao.PortServiceDao;
 import com.com619.group6.model.dao.DaoFactory;
 import com.com619.group6.model.dao.PortServiceOrderDao;
 
@@ -20,6 +21,11 @@ public final class DaoFactoryJpa implements DaoFactory {
     private static final BerthDao BERTH_DAO;
 
     /**
+     * DAO singleton used to access data related to the port service entities.
+     */
+    private static final PortServiceDao PORT_SERVICE_DAO;
+
+    /**
      * DAO singleton used to access data related to the port service order
      * entities.
      */
@@ -32,11 +38,17 @@ public final class DaoFactoryJpa implements DaoFactory {
         EntityManager em = factory.createEntityManager();
 
         BERTH_DAO = new BerthDaoJpa(em);
+        PORT_SERVICE_DAO = new PortServiceDaoJpa(em);
         PORT_SERVICE_ORDER_DAO = new PortServiceOrderDaoJpa(em);
     }
     @Override
     public BerthDao getBerthDao() {
         return BERTH_DAO;
+    }
+
+    @Override
+    public PortServiceDao getPortServiceDao() {
+        return PORT_SERVICE_DAO;
     }
 
     @Override
