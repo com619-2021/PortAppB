@@ -9,13 +9,14 @@ http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd" version="2.0"
     <persistence-unit name="portAppBPersistence" transaction-type="RESOURCE_LOCAL">
         <!-- explicitly list classes from model -->
         <class>com.com619.group6.model.Berth</class>
+        <class>com.com619.group6.model.PortServiceOrder</class>
 
         <properties>
             <!-- Derby java database -->
             <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver"/>
 
             <!-- target/tmp places database in target directory so gets removed on every run -->
-            <property name="javax.persistence.jdbc.url" value="jdbc:derby:target/tmp/lundergrounddb;create=true"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:derby:target/tmp/portAppB;create=true"/>
             <property name="javax.persistence.jdbc.user" value="je"/>
             <property name="javax.persistence.jdbc.password" value="je"/>
 
