@@ -7,70 +7,94 @@ import javax.persistence.Id;
 
 /**
  * Model class representing a service as part of a PSO.
- * 
- * @author WhitearL
  *
+ * @author WhitearL
  */
 @Entity
 public class PortService {
-	private long id;
-	private ServiceType serviceType;
-	private double cost;
+    /**
+     * Unique ID for the PortService instance.
+     */
+    private long id;
 
-	/**
-	 * Public constructor, allow instantiation
-	 * 
-	 * @param id          ID of this service
-	 * @param serviceType Type of service this is
-	 * @param cost        The cost of this service.
-	 */
-	public PortService(int id, ServiceType serviceType, double cost) {
-		this.id = id;
-		this.serviceType = serviceType;
-		this.cost = cost;
-	}
+    /**
+     * Name of the PortService instance.
+     */
+    private String name;
 
-	public PortService() {
-	}
+    /**
+     * What category the port service is.
+     */
+    private ServiceType serviceType;
 
-	/**
-	 * @return the id
-	 */
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public long getId() {
-		return id;
-	}
+    /**
+     * Cost of the port service.
+     */
+    private double cost;
 
-	public void setId(long newId) {
-		id = newId;
-	}
+    /**
+     * Public constructor, allow instantiation.
+     *
+     * @param newId          ID of this service
+     * @param newServiceType Type of service this is
+     * @param newCost        The cost of this service.
+     */
+    public PortService(final int newId, final ServiceType newServiceType,
+                       final double newCost) {
+        id = newId;
+        serviceType = newServiceType;
+        cost = newCost;
+    }
 
-	/**
-	 * @return the serviceType
-	 */
-	public ServiceType getServiceType() {
-		return serviceType;
-	}
+    /**
+     * Public constructor, allow instantiation.
+     */
+    public PortService() {
+    }
 
-	/**
-	 * @param serviceType the serviceType to set
-	 */
-	public void setServiceType(ServiceType serviceType) {
-		this.serviceType = serviceType;
-	}
+    /**
+     * @return the id
+     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public long getId() {
+        return id;
+    }
 
-	/**
-	 * @return the cost
-	 */
-	public double getCost() {
-		return cost;
-	}
+    /**
+     * ID Property - setter.
+     *
+     * @param newId the id to set
+     */
+    public void setId(final long newId) {
+        id = newId;
+    }
 
-	/**
-	 * @param cost the cost to set
-	 */
-	public void setCost(double cost) {
-		this.cost = cost;
-	}
+    /**
+     * @return the serviceType
+     */
+    public ServiceType getServiceType() {
+        return serviceType;
+    }
+
+    /**
+     * @param newServiceType the serviceType to set
+     */
+    public void setServiceType(final ServiceType newServiceType) {
+        this.serviceType = newServiceType;
+    }
+
+    /**
+     * @return the cost
+     */
+    public double getCost() {
+        return cost;
+    }
+
+    /**
+     * @param newCost the cost to set
+     */
+    public void setCost(final double newCost) {
+        this.cost = newCost;
+    }
 }

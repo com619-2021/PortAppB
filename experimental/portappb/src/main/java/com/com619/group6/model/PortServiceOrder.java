@@ -10,123 +10,140 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Model class representing a Port Service Order (PSO)
- * 
- * @author WhitearL
+ * Model class representing a Port Service Order (PSO).
  *
+ * @author WhitearL
  */
 @Entity
 public class PortServiceOrder {
-	/**
-	 * Unique ID for the PortServiceOrder instance.
-	 */
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+    /**
+     * Unique ID for the PortServiceOrder instance.
+     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
-	/**
-	 * Name of the PortServiceOrder instance.
-	 */
-	private String name;
+    /**
+     * Name of the PortServiceOrder instance.
+     */
+    private String name;
 
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<PortService> servicesRequired;
+    /**
+     * List of the required port services.
+     */
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<PortService> servicesRequired;
 
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Stevedore> assignedStevedores;
-	private double totalCost;
+    /**
+     * List of the stevedores assigned to the order.
+     */
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Stevedore> assignedStevedores;
 
-	/**
-	 * Public constructor, allow instantiation
-	 * 
-	 * @param servicesRequired   Services required for PSO
-	 * @param assignedStevedores Stevedores assigned to PSO
-	 * @param totalCost          Total cost of PSO
-	 */
-	public PortServiceOrder(List<PortService> servicesRequired, List<Stevedore> assignedStevedores, double totalCost) {
-		this.servicesRequired = servicesRequired;
-		this.assignedStevedores = assignedStevedores;
-		this.totalCost = totalCost;
-	}
+    /**
+     * Total cost of the service order.
+     */
+    private double totalCost;
 
-	public PortServiceOrder() {
-		this(new ArrayList<PortService>(), new ArrayList<Stevedore>(), 0.0);
-	}
+    /**
+     * Public constructor, allow instantiation.
+     *
+     * @param newServicesRequired   Services required for PSO
+     * @param newAssignedStevedores Stevedores assigned to PSO
+     * @param newTotalCost          Total cost of PSO
+     */
+    public PortServiceOrder(final List<PortService> newServicesRequired,
+                            final List<Stevedore> newAssignedStevedores,
+                            final double newTotalCost) {
+        servicesRequired = newServicesRequired;
+        assignedStevedores = newAssignedStevedores;
+        totalCost = newTotalCost;
+    }
 
-	/**
-	 * ID Property - getter.
-	 *
-	 * @return the id
-	 */
-	public long getId() {
-		return id;
-	}
+    /**
+     * Public constructor, allow instantiation.
+     */
+    public PortServiceOrder() {
+        this(new ArrayList<PortService>(), new ArrayList<Stevedore>(), 0.0);
+    }
 
-	/**
-	 * ID Property - setter.
-	 *
-	 * @param newId the id to set
-	 */
-	public void setId(final long newId) {
-		this.id = newId;
-	}
+    /**
+     * ID Property - getter.
+     *
+     * @return the id
+     */
+    public long getId() {
+        return id;
+    }
 
-	/**
-	 * Name property - getter.
-	 *
-	 * @return return the current name of the berth
-	 */
-	public String getName() {
-		return name;
-	}
+    /**
+     * ID Property - setter.
+     *
+     * @param newId the id to set
+     */
+    public void setId(final long newId) {
+        this.id = newId;
+    }
 
-	/**
-	 * Name property - setter.
-	 * @param newName the new name of the berth
-	 */
-	public void setName(final String newName) {
-		name = newName;
-	}
+    /**
+     * Name property - getter.
+     *
+     * @return return the current name of the berth
+     */
+    public String getName() {
+        return name;
+    }
 
-	/**
-	 * @return the servicesRequired
-	 */
-	public List<PortService> getServicesRequired() {
-		return servicesRequired;
-	}
+    /**
+     * Name property - setter.
+     *
+     * @param newName the new name of the berth
+     */
+    public void setName(final String newName) {
+        name = newName;
+    }
 
-	/**
-	 * @param servicesRequired the servicesRequired to set
-	 */
-	public void setServicesRequired(List<PortService> servicesRequired) {
-		this.servicesRequired = servicesRequired;
-	}
+    /**
+     * @return the servicesRequired
+     */
+    public List<PortService> getServicesRequired() {
+        return servicesRequired;
+    }
 
-	/**
-	 * @return the assignedStevedores
-	 */
-	public List<Stevedore> getAssignedStevedores() {
-		return assignedStevedores;
-	}
+    /**
+     * @param newServicesRequired the servicesRequired to set
+     */
+    public void setServicesRequired(
+            final List<PortService> newServicesRequired) {
+        this.servicesRequired = newServicesRequired;
+    }
 
-	/**
-	 * @param assignedStevedores the assignedStevedores to set
-	 */
-	public void setAssignedStevedores(List<Stevedore> assignedStevedores) {
-		this.assignedStevedores = assignedStevedores;
-	}
+    /**
+     * @return the assignedStevedores
+     */
+    public List<Stevedore> getAssignedStevedores() {
+        return assignedStevedores;
+    }
 
-	/**
-	 * @return the totalCost
-	 */
-	public double getTotalCost() {
-		return totalCost;
-	}
+    /**
+     * @param newAssignedStevedores the assignedStevedores to set
+     */
+    public void setAssignedStevedores(
+            final List<Stevedore> newAssignedStevedores) {
+        assignedStevedores = newAssignedStevedores;
+    }
 
-	/**
-	 * @param totalCost the totalCost to set
-	 */
-	public void setTotalCost(double totalCost) {
-		this.totalCost = totalCost;
-	}
+    /**
+     * @return the totalCost
+     */
+    public double getTotalCost() {
+        return totalCost;
+    }
+
+    /**
+     * @param newTotalCost the totalCost to set
+     */
+    public void setTotalCost(final double newTotalCost) {
+        totalCost = newTotalCost;
+    }
 }

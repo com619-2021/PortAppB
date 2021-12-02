@@ -9,8 +9,17 @@ import javax.validation.constraints.NotNull;
 
 import java.util.List;
 
-public class CommonDaoJpa<T> implements CommonDao<T> {
+/**
+ * Abstract DAO class that provides basic CRUD operations.
+ *
+ * @param <T>
+ */
+public abstract class CommonDaoJpa<T> implements CommonDao<T> {
+    /**
+     * The class type of the entity the DAO instance is against.
+     */
     private final Class<T> typeParameterClass;
+
     /**
      * Entity manager used for persistence.
      */
@@ -20,16 +29,16 @@ public class CommonDaoJpa<T> implements CommonDao<T> {
      * Public constructor for the PortServiceOrderDao JPA implementation.
      *
      * @param em        Entity manager required for persistence
-     * @param classType the type of the class representing the entity
+     * @param classType the type of the class representing the entity T
      */
     @NotNull
-    public CommonDaoJpa(EntityManager em, Class<T> classType) {
+    public CommonDaoJpa(final EntityManager em, final Class<T> classType) {
         entityManager = em;
         typeParameterClass = classType;
     }
 
     @Override
-    public void create(T newEntity) {
+    public final void create(final T newEntity) {
         entityManager.getTransaction()
                 .begin();
         entityManager.persist(newEntity);
@@ -38,38 +47,43 @@ public class CommonDaoJpa<T> implements CommonDao<T> {
     }
 
     @Override
-    public T getOne(long entityId) {
+    public final T getOne(final long entityId) {
         TypedQuery<T> q = entityManager.createQuery(
-                        "SELECT e FROM " + typeParameterClass.getSimpleName() + " e WHERE e.id=:id", typeParameterClass)
+                        "SELECT e FROM " + typeParameterClass.getSimpleName()
+                                + " e WHERE e.id=:id", typeParameterClass)
                 .setParameter("id", entityId);
         return runGetEntityQuery(q);
     }
 
     @Override
-    public T getOne(String name) {
+    public final T getOne(final String name) {
         TypedQuery<T> q = entityManager.createQuery(
-                        "SELECT e FROM " + typeParameterClass.getSimpleName() + " e WHERE e.name=:name", typeParameterClass)
+                        "SELECT e FROM " + typeParameterClass.getSimpleName()
+                                + " e WHERE e.name=:name", typeParameterClass)
                 .setParameter("name", name);
         return runGetEntityQuery(q);
     }
 
     @Override
-    public List<T> getAll() {
-        TypedQuery<T> q = entityManager.createQuery("SELECT e FROM " + typeParameterClass.getSimpleName() + " e",
+    public final List<T> getAll() {
+        TypedQuery<T> q = entityManager.createQuery("SELECT e FROM "
+                        + typeParameterClass.getSimpleName() + " e",
                 typeParameterClass);
         return q.getResultList();
     }
 
     @Override
-    public void update(T details) {
+    public final void update(final T details) {
         entityManager.merge(details);
     }
 
     @Override
-    public void deleteOne(long entityId) {
+    public final void deleteOne(final long entityId) {
         entityManager.getTransaction()
                 .begin();
-        entityManager.createQuery("DELETE FROM " + typeParameterClass.getSimpleName() + " e WHERE e.id=:id")
+        entityManager.createQuery("DELETE FROM "
+                        + typeParameterClass.getSimpleName()
+                        + " e WHERE e.id=:id")
                 .setParameter("id", entityId)
                 .executeUpdate();
         entityManager.getTransaction()
@@ -77,16 +91,17 @@ public class CommonDaoJpa<T> implements CommonDao<T> {
     }
 
     @Override
-    public void deleteAll() {
+    public final void deleteAll() {
         entityManager.getTransaction()
                 .begin();
-        entityManager.createQuery("DELETE FROM " + typeParameterClass.getSimpleName())
+        entityManager.createQuery("DELETE FROM "
+                        + typeParameterClass.getSimpleName())
                 .executeUpdate();
         entityManager.getTransaction()
                 .commit();
     }
 
-    protected T runGetEntityQuery(final TypedQuery<T> q) {
+    protected final T runGetEntityQuery(final TypedQuery<T> q) {
         T result;
         try {
             result = q.getSingleResult();

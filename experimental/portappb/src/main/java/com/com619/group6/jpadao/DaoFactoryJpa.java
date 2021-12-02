@@ -27,7 +27,8 @@ public final class DaoFactoryJpa implements DaoFactory {
 
 
     static {
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+        EntityManagerFactory factory =
+                Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
         EntityManager em = factory.createEntityManager();
 
         BERTH_DAO = new BerthDaoJpa(em);
