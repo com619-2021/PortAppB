@@ -14,7 +14,7 @@ import com.vaadin.flow.router.*;
 
 @Route("/berths/new")
 public class AddBerth extends Div {
-    BerthDao berthDao;
+    private BerthDao berthDao;
 
     TextField nameField = new TextField();
 

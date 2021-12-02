@@ -13,12 +13,12 @@ import javax.persistence.Id;
 @Entity
 public class Berth {
     /**
-     * Unique ID for the Station instance.
+     * Unique ID for the Berth instance.
      */
     private long id;
 
     /**
-     * Unique ID for the Station instance.
+     * Name of the Berth instance.
      */
     private String name;
 
