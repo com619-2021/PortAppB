@@ -34,3 +34,7 @@ jobs:
       - name: Build and install project with Maven
         run: mvn -B clean install
         working-directory: experimental/portappb
+        
+      - name: "Build Container"
+        working-directory: experimental/portappb
+        run: mvn --batch-mode jib:dockerBuild
