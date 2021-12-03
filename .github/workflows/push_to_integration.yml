@@ -35,12 +35,12 @@ jobs:
         working-directory: experimental/portappb
         run: |
           mvn --batch-mode clean compile jib:dockerBuild
-          docker tag port-app-b:latest ghcr.io/${{ github.repository_owner }}/port-app-b:${{ env.RELEASE_VERSION }}
-          docker push ghcr.io/${{ github.repository_owner }}/port-app-b:${{ env.RELEASE_VERSION }}
+          docker tag portappb:latest ghcr.io/${{ github.repository_owner }}/portappb:${{ env.RELEASE_VERSION }}
+          docker push ghcr.io/${{ github.repository_owner }}/portappb:${{ env.RELEASE_VERSION }}
       - name: Send Deploy Notification to Integration Repo
         uses: peter-evans/repository-dispatch@v1
         with:
           token: ${{ secrets.REPO_TOKEN }}
           repository: com619-2021/IntegrationB
           event-type: deploy
-          client-payload: '{"image_owner": "PORT_IMAGE", "image_tag": "ghcr.io/${{ github.repository_owner }}/port-app-b:${{ env.RELEASE_VERSION }}"}'
+          client-payload: '{"image_owner": "PORT_IMAGE", "image_tag": "ghcr.io/${{ github.repository_owner }}/portappb:${{ env.RELEASE_VERSION }}"}'

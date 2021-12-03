@@ -230,7 +230,7 @@
 						</ports>
 					</container>
 					<from>
-						<image>openjdk:8u171-alpine</image>
+						<image>openjdk:11</image>
 					</from>
 					<to>
 						<image>registry.hub.docker.com/whitearl/port-app-b</image>
