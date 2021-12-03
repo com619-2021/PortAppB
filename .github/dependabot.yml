@@ -2,23 +2,18 @@
 # package ecosystems to update and where the package manifests are located.
 # Please see the documentation for all configuration options:
 # https://help.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
-
 ---
-
 version: 2
 updates:
-  - package-ecosystem: "maven" # See documentation for possible values
-    directory: "/experimental/portappb/" # Location of package manifests
-    schedule:
-      interval: "daily"
-
-  - package-ecosystem: "github-actions" # See documentation for possible values
-    directory: "/" # Location of package manifests
-    schedule:
-      interval: "daily"
-
-  - package-ecosystem: "npm" # Maintain dependencies for npm
+  - package-ecosystem: "maven"
     directory: "/experimental/portappb/"
     schedule:
       interval: "daily"
-      
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "npm"
+    directory: "/experimental/portappb/"
+    schedule:
+      interval: "daily"
