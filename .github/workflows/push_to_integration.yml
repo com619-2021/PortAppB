@@ -34,7 +34,7 @@ jobs:
       - name: "Build with Maven"
         working-directory: experimental/portappb
         run: |
-          mvn --batch-mode jib:dockerBuild
+          mvn --batch-mode clean compile jib:dockerBuild
           docker port-app-b:latest ghcr.io/${{ github.repository_owner }}/port-app-b:${{ env.RELEASE_VERSION }}
           docker push ghcr.io/${{ github.repository_owner }}/port-app-b:${{ env.RELEASE_VERSION }}
       - name: Send Deploy Notification to Integration Repo
