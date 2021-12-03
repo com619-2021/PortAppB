@@ -11,8 +11,7 @@ on:
   
 jobs:
   build-and-deploy:
-    name: Setup, Build and Publish
-    
+    name: Setup, Build and Publish    
     runs-on: ubuntu-latest
     
     steps:

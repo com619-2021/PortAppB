@@ -21,4 +21,3 @@ updates:
     directory: "/experimental/portappb/"
     schedule:
       interval: "daily"
-      
