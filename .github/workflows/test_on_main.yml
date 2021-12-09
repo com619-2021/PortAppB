@@ -39,7 +39,7 @@ jobs:
 
       - name: "Build Container"
         working-directory: experimental/portappb
-        run: mvn --batch-mode jib:dockerBuild
+        run: mvn --batch-mode jib:dockerBuild -Pproduction
       
       - name: Bump version and push tag
         id: tag_version
